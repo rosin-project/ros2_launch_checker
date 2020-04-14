@@ -33,3 +33,14 @@ Verbose version:
 ```bash
 python3 launch_cmake_checker.py ../ros2_tf_stresser-master --verbose
 ```
+
+
+## Testing
+
+Some tests are included. In the root folder, run the following:
+
+```bash
+python3 -m unittest -b
+```
+
+The `-b` option supresses the standard input logging information.
