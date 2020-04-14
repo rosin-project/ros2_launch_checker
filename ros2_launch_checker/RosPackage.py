@@ -4,7 +4,7 @@ import difflib
 import setuptools
 from colorama import Fore, Style
 
-from src.Occurrence import Occurrence
+from ros2_launch_checker.Occurrence import Occurrence
 
 
 class RosPackage:

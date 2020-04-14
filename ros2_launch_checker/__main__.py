@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import argparse
 
-from src.RosPackage import RosPackage
+from ros2_launch_checker.RosPackage import RosPackage
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(

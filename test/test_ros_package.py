@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from src.RosPackage import RosPackage
+from ros2_launch_checker.RosPackage import RosPackage
 
 
 class PositiveTest(unittest.TestCase):
