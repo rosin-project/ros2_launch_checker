@@ -1,12 +1,14 @@
 # ROS2 launch checker
 
-ROS2 are made of different artifacts, and there are some name matchings
+ROS2 packages are made of different artifacts, and there are some name matchings
 among those files that can fail. This script aims to verify them.
 
-Given a ROS2 package, it checks that all the  
+Given a ROS2 package, it checks that all the `node_executable`s on any launch
+files are correctly defined either in a `CMakeLists.txt` file or in the 
+`setup.py` file. If there is any mismatch, name suggestions are provided. 
 
-**WARNING: this script executes your setup.py files, if any. Use with
-caution and under your risk.**
+**WARNING: this script executes files called `setup.py`, if any. Use under your
+own risk.**
 
 ## Installation
 
@@ -26,7 +28,7 @@ Simple version:
 python3 launch_cmake_checker.py ../ros2_tf_stresser-master 
 ```
 
-Detailed version:
+Verbose version:
 
 ```bash
 python3 launch_cmake_checker.py ../ros2_tf_stresser-master --verbose
