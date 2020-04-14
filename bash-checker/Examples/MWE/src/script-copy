@@ -1,3 +1,0 @@
-#/bin/bash
-ipython -i non_exsistent.py
-my_cool_homemade_dependency

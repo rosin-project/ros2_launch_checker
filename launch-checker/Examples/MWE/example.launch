@@ -1,6 +1,0 @@
-<launch>
-  <group if="$(arg sim)">
-    <include file="$(find nonexistent_package_1)/launch/robot_interface_simulator.launch" />
-  </group>
-  <include file="$(find nonexistent_package_2)/launch/robot_interface_simulator.launch" />
-</launch>
