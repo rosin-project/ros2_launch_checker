@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from RosPackage import RosPackage
+from src.RosPackage import RosPackage
 
 
 class PositiveTest(unittest.TestCase):

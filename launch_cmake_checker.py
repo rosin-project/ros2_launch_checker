@@ -1,6 +1,6 @@
 import argparse
 
-from RosPackage import RosPackage
+from src.RosPackage import RosPackage
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
