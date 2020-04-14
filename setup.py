@@ -18,7 +18,7 @@ setup(
         "colorama>=0.4.3",
     ],
     entry_points = {
-        'console_scripts': [
+        'console_scripts':[
             'launch_cmake_checker = ros2_launch_checker.__main__:main'
         ]
     },
