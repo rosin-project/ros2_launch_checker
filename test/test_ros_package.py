@@ -31,7 +31,7 @@ class PositiveTest(unittest.TestCase):
         self.assertEqual(len(errors), 1)
 
         error = errors[0]
-        self.assertEqual(error.content, "stressingT")
+        self.assertEqual(error.content, "stressing")
 
 
 if __name__ == "__main__":
