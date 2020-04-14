@@ -22,16 +22,18 @@ Requires a path to the root of a ROS2 package (i.e. where the `package.xml`
 file is placed). Accepts an optional argument ``--verbose`` or `-v` to display
 more details.
 
+This script runs with python 3.
+
 Simple version:
 
 ```bash
-python3 launch_cmake_checker.py ../ros2_tf_stresser-master 
+python launch_cmake_checker.py ../ros2_tf_stresser-master 
 ```
 
 Verbose version:
 
 ```bash
-python3 launch_cmake_checker.py ../ros2_tf_stresser-master --verbose
+python launch_cmake_checker.py ../ros2_tf_stresser-master --verbose
 ```
 
 
@@ -40,7 +42,7 @@ python3 launch_cmake_checker.py ../ros2_tf_stresser-master --verbose
 Some tests are included. In the root folder, run the following:
 
 ```bash
-python3 -m unittest -b
+python -m unittest -b
 ```
 
 The `-b` option supresses the standard input logging information.
