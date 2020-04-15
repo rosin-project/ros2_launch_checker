@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import argparse
 
 from ros2_launch_checker.RosPackage import RosPackage
