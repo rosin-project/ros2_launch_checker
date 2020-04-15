@@ -19,7 +19,7 @@ setup(
     ],
     entry_points = {
         'console_scripts':[
-            'launch_cmake_checker = ros2_launch_checker.__main__:main'
+            'ros2_launch_checker = ros2_launch_checker.__main__:main'
         ]
     },
     classifiers=[

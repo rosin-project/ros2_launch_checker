@@ -28,13 +28,13 @@ This script runs with python 3.
 Simple version:
 
 ```bash
-python3 -m launch_cmake_checker my_great_ros2_package/
+python3 -m ros2_launch_checker my_great_ros2_package/
 ```
 
 Verbose version:
 
 ```bash
-python3 -m launch_cmake_checker my_great_ros2_package/ --verbose
+python3 -m ros2_launch_checker my_great_ros2_package/ --verbose
 ```
 
 
