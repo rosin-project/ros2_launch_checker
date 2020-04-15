@@ -1,4 +1,5 @@
 # ROS2 launch checker
+![Tests](https://github.com/rosin-project/ros2_launch_checker/workflows/Tests/badge.svg)
 
 ROS2 packages are made of different artifacts, and there are some name matchings
 among those files that can fail. This script aims to verify them.
