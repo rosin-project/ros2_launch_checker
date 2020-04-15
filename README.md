@@ -28,13 +28,13 @@ This script runs with python 3.
 Simple version:
 
 ```bash
-python3 -m launch_cmake_checker ../ros2_tf_stresser-master 
+python3 -m launch_cmake_checker my_great_ros2_package/
 ```
 
 Verbose version:
 
 ```bash
-python3 -m launch_cmake_checker ../ros2_tf_stresser-master --verbose
+python3 -m launch_cmake_checker my_great_ros2_package/ --verbose
 ```
 
 
