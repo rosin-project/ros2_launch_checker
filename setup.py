@@ -19,7 +19,7 @@ setup(
     ],
     entry_points = {
         'console_scripts':[
-            'ros2_launch_checker = ros2_launch_checker.ros2_checker:main'
+            'ros2_launch_checker = ros2_launch_checker.__main__:main'
         ]
     },
     classifiers=[
