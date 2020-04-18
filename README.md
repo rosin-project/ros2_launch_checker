@@ -14,7 +14,7 @@ own risk.**
 ## Installation
 
 ```bash
-pip install .
+pip3 install .
 ```
 
 ## Execution
