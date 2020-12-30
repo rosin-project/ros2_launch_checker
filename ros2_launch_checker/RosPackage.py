@@ -27,7 +27,7 @@ class RosPackage:
         self.logger("Verifying integrity...", forced=True)
 
         # Executables of launch files should be found either
-        # in the cmakelists or in the setup.py 
+        # in the cmakelists or in the setup.py
         finding_containers = self.setup_py_entry_points + self.cmakelists_executables
         errors = []
         for launch_occ in self.launch_files_executables:
@@ -36,7 +36,11 @@ class RosPackage:
             # Find if there is any occurrence with the same content as ours.
             # If not, report an error.
             if not [x for x in finding_containers if x.content == exec_node]:
-                self.logger("- " + launch_occ.totext(True) + " not found.", indent=1, forced=True)
+                self.logger(
+                    "- " + launch_occ.totext(True) + " not found.",
+                    indent=1,
+                    forced=True,
+                )
                 errors.append(launch_occ)
 
                 # Find something close to relate with
@@ -44,10 +48,16 @@ class RosPackage:
                 closest = difflib.get_close_matches(exec_node, where_to_find, n=1)
                 if closest:
                     closest = closest[0]
-                    closest_occ = [x for x in finding_containers if x.content == closest]
+                    closest_occ = [
+                        x for x in finding_containers if x.content == closest
+                    ]
                     if closest_occ:
                         closest_occ = closest_occ[0]
-                        self.logger("  Maybe you meant " + str(closest_occ) + " ?", indent=1, forced=True)
+                        self.logger(
+                            "  Maybe you meant " + str(closest_occ) + " ?",
+                            indent=1,
+                            forced=True,
+                        )
 
         # Report whether there were errors or not
         if errors:
@@ -85,15 +95,17 @@ class RosPackage:
             exec(content)
 
             # setup_py_tree now contains the tree
-            entry_points = setup_py_tree["entry_points"]["console_scripts"]
+            if (
+                "entry_points" in setup_py_tree
+                and "console_scripts" in setup_py_tree["entry_points"]
+            ):
+                entry_points = setup_py_tree["entry_points"]["console_scripts"]
+            else:
+                entry_points = []
 
             for ep in entry_points:
                 ep = ep.split("=")[0].strip()
-                oc = Occurrence(
-                    file=setup_file,
-                    line_number=None,
-                    content=ep
-                )
+                oc = Occurrence(file=setup_file, line_number=None, content=ep)
                 self.setup_py_entry_points.append(oc)
                 self.logger(str(oc), indent=2)
 
@@ -105,10 +117,12 @@ class RosPackage:
         find_expression = f'find {self.path} -type f -name "CMakeLists.txt"'
         cmakelists = os.popen(find_expression).readlines()
 
-        regex = r'add_executable\(([a-zA-Z_][a-zA-Z0-9_]*)'
+        regex = r"add_executable\(([a-zA-Z_][a-zA-Z0-9_]*)"
 
         if not cmakelists:
-            self.logger(self.warning("No CMakeLists.txt files found"), indent=1, forced=True)
+            self.logger(
+                self.warning("No CMakeLists.txt files found"), indent=1, forced=True
+            )
 
         for cmakelist in cmakelists:
             cmakelist = cmakelist.strip()
@@ -120,9 +134,7 @@ class RosPackage:
 
                     if groups:
                         oc = Occurrence(
-                            file=cmakelist,
-                            line_number=cnt,
-                            content=groups[0]
+                            file=cmakelist, line_number=cnt, content=groups[0]
                         )
                         self.cmakelists_executables.append(oc)
                         self.logger(str(oc), indent=2)
@@ -132,11 +144,14 @@ class RosPackage:
 
         self.logger("Checking launch file(s)...")
 
-        find_expression = f'find {self.path} -type f -name "*.launch.py"'
+        # find_expression = f'find {self.path} -type f -name "*.launch.py"'
+        find_expression = (
+            f'find {self.path} -type f \( -name "*.launch.py" -o -name "*launch.py" \)'
+        )
         launchfiles = os.popen(find_expression).readlines()
 
-        regex1 = r"node_executable='([^']+)'"
-        regex2 = r'node_executable="([^"]+)"'
+        regex1 = r"(?:node_)?executable='([^']+)'"
+        regex2 = r'(?:node_)?executable="([^"]+)"'
 
         if not launchfiles:
             self.logger(self.warning("No launch files found"), indent=1, forced=True)
@@ -152,9 +167,7 @@ class RosPackage:
 
                     if groups:
                         oc = Occurrence(
-                            file=launchfile,
-                            line_number=cnt,
-                            content=groups[0]
+                            file=launchfile, line_number=cnt, content=groups[0]
                         )
                         self.launch_files_executables.append(oc)
                         self.logger(str(oc), indent=2)
